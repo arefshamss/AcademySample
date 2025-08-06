@@ -1,0 +1,9 @@
+﻿toastr.options.newestOnTop = false;
+toastr.options.progressBar = true;
+toastr.options.positionClass = "toast-top-right";
+toastr.options.showMethod = 'fadeIn';
+toastr.options.hideMethod = 'fadeOut';
+toastr.options.closeMethod = 'fadeOut';
+toastr.options.timeOut = 2100;
+toastr.options.extendedTimeOut = 700;
+toastr.options.rtl = true;

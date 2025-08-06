@@ -1,0 +1,33 @@
+﻿@model Academy.Domain.ViewModels.CourseCategory.Admin.AdminFilterCourseCategoryViewModel
+
+@if (Model != null && Model.Entities != null && Model.Entities.Any())
+{
+    <li>
+        <a class="headerarea__has__dropdown" href="#">دوره‌ها <i class="icofont-rounded-down"></i></a>
+        <ul class="headerarea__submenu headerarea__submenu--third--wrap">
+                @foreach (var item in Model.Entities.Where(x => x.ParentId == null))
+                {
+                    var children = Model.Entities.Where(x => x.ParentId == item.Id).ToList();
+                    <li class="position-relative">
+                        <a href="#">@item.Title 
+                            @if (children.Any())
+                            {
+                                <i class="icofont-rounded-left"></i>
+                            }
+                        </a>
+                        @if (children.Any())
+                        {
+                            <ul class="headerarea__submenu--third">
+                                @foreach (var child in children)
+                                {
+                                    <li><a href="#">@child.Title</a></li>
+                                }
+                               
+                            </ul>
+                        }
+                    </li>
+                }
+        </ul>
+    </li>
+
+}

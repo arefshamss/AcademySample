@@ -1,0 +1,17 @@
+{
+  "name": "academy.web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:admin": "tailwindcss -i ./wwwroot/admin/css/custom-admin-input.css -o ./wwwroot/admin/css/custom-admin-output.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.3"
+  }
+}

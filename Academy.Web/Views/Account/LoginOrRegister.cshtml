@@ -1,0 +1,191 @@
+﻿@model Academy.Domain.ViewModels.User.Account.LoginOrRegisterViewModel
+
+@{
+    ViewData["Title"] = "ورود به حساب کاربری";
+}
+
+@section Breadcrumb
+{
+    <breadcrumb page-title="@ViewData["Title"]">
+        <breadcrumb-item last-active-item="true">@ViewData["Title"]</breadcrumb-item>
+    </breadcrumb>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}
+
+
+<!-- login__section__start -->
+<div class="loginarea mt-4 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-md-8 offset-md-2 mx-auto" data-aos="fade-up">
+                <ul class="nav  tab__button__wrap text-center" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="single__tab__link @(!Model.IsLoginByPassword ? "active" : "")"
+                                data-loginbypassword="false"
+                                data-bs-toggle="tab"
+                                data-bs-target="#projects__one"
+                                type="button">
+                            ورود با کد یکبارمصرف
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+
+                        <button class="single__tab__link @(Model.IsLoginByPassword ? "active" : "")"
+                                data-loginbypassword="true"
+                                data-bs-toggle="tab"
+                                data-bs-target="#projects__two"
+                                type="button">
+                            ورود با رمز عبور
+                        </button>
+
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
+
+                <div class="tab-pane fade @(!Model.IsLoginByPassword ? "show active" : "")" id="projects__one"
+                     role="tabpanel">
+                    <div class="col-xl-8 col-md-8 offset-md-2 mx-auto" id="login-form-container">
+                        <div class="loginarea__wraper">
+                            <div class="login__heading">
+                                <h5 class="login__title">
+                                    وارد شوید یا ثبت‌نام کنید
+                                </h5>
+                            </div> 
+
+
+                            <form asp-area=""
+                                  asp-controller="Account"
+                                  asp-action="LoginOrRegister"
+                                  method="post"
+                                  enctype="multipart/form-data">
+                                <input asp-for="IsLoginByPassword" type="hidden"/>
+                                <input asp-for="ReturnUrl" type="hidden"/>
+                                <div class="login__form">
+                                    <label class="form__label">
+                                        تلفن همراه یا ایمیل
+                                    </label>
+                                    <input asp-for="MobileOrEmail" class="common__login__input" type="text"
+                                           autocomplete="new-mobile"
+                                           placeholder="تلفن همراه یا ایمیل خود را وارد کنید...">
+                                    <validation-span asp-validation-for="MobileOrEmail"/>
+                                </div>
+                                <div class="login__button mt-4 text-center">
+                                    <div class="justify-content-center">
+                                        <button type="submit" class="default__button w-100">
+                                            ورود / ثبت‌نام
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="login__social__option">
+                                <p class="mb-3">
+                                    یا وارد شوید با...
+                                </p>
+
+                                <ul class="login__social__btn">
+                                    <li>
+                                        <a class="default__button" asp-area="" asp-controller="Account" asp-action="GoogleSignIn">
+                                            <i class="icofont-google-plus"></i> Google</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade @(Model.IsLoginByPassword ? "show active" : "")" id="projects__two"
+                     role="tabpanel">
+                    <div class="col-xl-8 offset-md-2 mx-auto">
+                        <div class="loginarea__wraper">
+                            <div class="login__heading">
+                                <h5 class="login__title">
+                                    با رمز عبور وارد شوید
+                                </h5>
+                            </div>
+
+
+                            <form asp-area=""
+                                  asp-controller="Account"
+                                  asp-action="LoginOrRegister"
+                                  method="post"
+                                  enctype="multipart/form-data">
+                                <input asp-for="IsLoginByPassword" type="hidden"/>
+                                <input asp-for="ReturnUrl" type="hidden"/>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="login__form">
+                                            <label class="form__label">تلفن همراه یا ایمیل</label>
+                                            <input asp-for="MobileOrEmail" class="common__login__input" type="text"
+                                                   autocomplete="new-mobileOrEmail"
+                                                   placeholder="تلفن همراه و یا ایمیل خود را وارد کنید...">
+                                            <validation-span asp-validation-for="MobileOrEmail"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="login__form">
+                                            <label class="form__label">کلمه عبور</label>
+                                            <input asp-for="Password" class="common__login__input" type="password"
+                                                   autocomplete="new-password"
+                                                   placeholder="کلمه عبور">
+                                            <validation-span asp-validation-for="Password"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="login__form d-flex justify-content-between flex-wrap gap-2">
+                                            <div class="text-end login__form__link">
+                                                <a asp-area=""
+                                                   asp-controller="account"
+                                                   asp-action="ForgotPassword">
+                                                    کلمه عبور خود را فراموش کرده‌اید؟
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="login__button mt-4 text-center">
+                                    <div class="justify-content-center">
+                                        <button type="submit" class="default__button w-100">
+                                            ورود
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class=" login__shape__img educationarea__shape_image">
+            <img loading="lazy" class="hero__shape hero__shape__1" src="/shared/img/education/hero_shape2.png"
+                 alt="Shape">
+            <img loading="lazy" class="hero__shape hero__shape__2" src="/shared/img/education/hero_shape3.png"
+                 alt="Shape">
+            <img loading="lazy" class="hero__shape hero__shape__3" src="/shared/img/education/hero_shape4.png"
+                 alt="Shape">
+            <img loading="lazy" class="hero__shape hero__shape__4" src="/shared/img/education/hero_shape5.png"
+                 alt="Shape">
+        </div>
+
+
+    </div>
+</div>
+
+<!-- login__section__end -->
+    
+   

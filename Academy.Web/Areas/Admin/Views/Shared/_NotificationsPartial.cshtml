@@ -1,0 +1,60 @@
+﻿@using Academy.Domain.Shared
+@if (TempData[MessageKey.SuccessMessage] is not null)
+{
+    <script>
+        showSweetAlert('@TempData[MessageKey.SuccessMessage]' , "success");
+    </script>
+}
+
+@if (TempData[MessageKey.ErrorMessage] is not null)
+{
+    <script>
+        showSweetAlert('@TempData[MessageKey.ErrorMessage]' , "error");
+    </script>   
+}
+
+@if (TempData[MessageKey.InfoMessage] is not null)
+{
+    <script>
+        showSweetAlert('@TempData[MessageKey.InfoMessage]' , "info");
+    </script>
+}
+
+@if (TempData[MessageKey.WarningMessage] is not null)
+{
+    <script>
+        showSweetAlert('@TempData[MessageKey.WarningMessage]' , "warning");
+    </script>
+}
+
+@if (TempData[MessageKey.ToasterSuccessMessage] is not null)
+{
+    <script>
+        showToaster('@TempData[MessageKey.ToasterSuccessMessage]' , "success");
+    </script>
+}
+
+@if (TempData[MessageKey.ToasterErrorMessage] is not null)
+{
+    <script>
+        showToaster('@TempData[MessageKey.ToasterErrorMessage]' , "error");
+    </script>
+}
+
+
+@if (TempData[MessageKey.ToasterInfoMessage] is not null)
+{
+    <script>
+        showToaster('@TempData[MessageKey.ToasterInfoMessage]' , "info");
+    </script>
+}
+
+
+
+@if (TempData[MessageKey.ToasterWarningMessage] is not null)
+{
+    <script>
+        showToaster('@TempData[MessageKey.ToasterWarningMessage]' , "warning");
+    </script>
+}
+

@@ -1,0 +1,213 @@
+﻿    <div class="relative justify-center flex-1 hidden xl:flex" data-tw-toggle="modal" data-tw-target="#quick-search">
+                                <div class="flex w-[350px] cursor-pointer items-center rounded-[0.5rem] border border-transparent bg-white/[0.12] px-3.5 py-2 text-white/60 transition-colors duration-300 hover:bg-white/[0.15] hover:duration-100">
+                                    <i data-tw-merge="" data-lucide="search" class="stroke-[1] h-[18px] w-[18px]"></i>
+                                    <div class="rtl:mr-2.5 ltr:ml-2.5 rtl:ml-auto ltr:mr-auto">جستجوی سریع...</div>
+                                    <div>⌘K</div>
+                                </div>
+                            </div>
+                            <div id="quick-search" aria-hidden="true" tabindex="-1" class="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed rtl:right-0 ltr:left-0 top-0 overflow-y-hidden z-[60] [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.1s]">
+                                <div class="relative mx-auto my-2 w-[95%] scale-95 transition-transform group-[.show]:scale-100 sm:mt-40 sm:w-[600px] lg:w-[700px]">
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 rtl:right-0 ltr:left-0 flex w-12 items-center justify-center">
+                                            <i data-tw-merge="" data-lucide="search" class="stroke-[1] w-5 h-5 rtl:-ml-1.5 ltr:-mr-1.5 text-slate-500"></i>
+                                        </div>
+                                        <input data-tw-merge="" type="text" placeholder="جستجوی سریع..." class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full border-slate-200 placeholder:text-slate-400/90 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10 rounded-lg border-0 py-3.5 rtl:pr-12 ltr:pl-12 rtl:pl-14 ltr:pr-14 text-base shadow-lg focus:ring-0">
+                                        <div class="absolute inset-y-0 rtl:left-0 ltr:right-0 flex w-14 items-center">
+                                            <div class="rtl:ml-auto ltr:mr-auto rounded-[0.4rem] border bg-slate-100 px-2 py-1 text-xs text-slate-500/80">
+                                                ESC
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="global-search global-search--show-result group relative z-10 mt-1 max-h-[468px] overflow-y-auto rounded-lg bg-white pb-1 shadow-lg sm:max-h-[615px]">
+                                        <div class="flex flex-col items-center justify-center pb-28 pt-20 group-[.global-search--show-result]:hidden">
+                                            <i data-tw-merge="" data-lucide="search-x" class="h-20 w-20 fill-theme-1/5 stroke-[0.5] text-theme-1/20"></i>
+                                            <div class="mt-5 text-xl font-medium">
+                                                هیچ نتیجه‌ای یافت نشد
+                                            </div>
+                                            <div class="mt-3 w-2/3 text-center leading-relaxed text-slate-500">
+                                                نتیجه‌ای برای یافت نشد
+                                                <span class="global-search__keyword font-medium italic"></span>
+                                                لطفاً یک عبارت جستجو متفاوت را امتحان کنید یا
+                                                املایی خود را بررسی کنید.
+                                            </div>
+                                        </div>
+                                        <div class="hidden group-[.global-search--show-result]:block">
+                                            <div class="px-5 py-4">
+                                                <div class="flex items-center">
+                                                    <div class="text-xs uppercase text-slate-500">
+                                                        جستجوی خود را از اینجا شروع کنید...
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3.5 flex flex-wrap gap-2">
+                                                    <a class="flex items-center gap-x-1.5 rounded-full border border-slate-300/70 px-3 py-0.5 hover:bg-slate-50" href="#">
+                                                        <i data-tw-merge="" data-lucide="users2" class="h-4 w-4 stroke-[1.3]"></i>
+                                                        کاربران
+                                                    </a>
+                                                    <a class="flex items-center gap-x-1.5 rounded-full border border-slate-300/70 px-3 py-0.5 hover:bg-slate-50" href="#">
+                                                        <i data-tw-merge="" data-lucide="building2" class="h-4 w-4 stroke-[1.3]"></i>
+                                                        بخش‌ها
+                                                    </a>
+                                                    <a class="flex items-center gap-x-1.5 rounded-full border border-slate-300/70 px-3 py-0.5 hover:bg-slate-50" href="#">
+                                                        <i data-tw-merge="" data-lucide="kanban-square" class="h-4 w-4 stroke-[1.3]"></i>
+                                                        محصولات
+                                                    </a>
+                                                    <a class="flex items-center gap-x-1.5 rounded-full border border-slate-300/70 px-3 py-0.5 hover:bg-slate-50" href="#">
+                                                        <i data-tw-merge="" data-lucide="mail-check" class="h-4 w-4 stroke-[1.3]"></i>
+                                                        ایمیل‌ها
+                                                    </a>
+                                                    <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown relative"><a data-tw-toggle="dropdown" aria-expanded="false" href="javascript:;" class="cursor-pointer flex items-center gap-x-1.5 rounded-full border border-slate-300/70 px-3 py-0.5 hover:bg-slate-50">بیشتر
+                                                            <i data-tw-merge="" data-lucide="chevron-down" class="rtl:-mr-0.5 ltr:-ml-0.5 h-4 w-4 stroke-[1.3]"></i>
+                                                        </a>
+                                                        <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
+                                                            <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
+                                                                <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i data-tw-merge="" data-lucide="map" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
+                                                                    موقعیت‌ها</a>
+                                                                <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i data-tw-merge="" data-lucide="file-check" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
+                                                                    پروژه‌ها</a>
+                                                                <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i data-tw-merge="" data-lucide="printer" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
+                                                                    دستگاه‌ها</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border-t border-dashed px-5 py-4">
+                                                <div class="flex items-center">
+                                                    <div class="text-xs uppercase text-slate-500">
+                                                        کاربران
+                                                    </div>
+                                                    <a class="rtl:mr-auto ltr:ml-auto text-xs text-slate-500" href="#">
+                                                        مشاهده همه
+                                                    </a>
+                                                </div>
+                                                <div class="mt-3.5 flex flex-col gap-1">
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="image-fit zoom-in box h-6 w-6 overflow-hidden rounded-full border-2 border-slate-200/70">
+                                                            <img src="/admin/images/users/user6-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی">
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            جنیفر لارنس
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            میامی، ایالات متحده
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="image-fit zoom-in box h-6 w-6 overflow-hidden rounded-full border-2 border-slate-200/70">
+                                                            <img src="/admin/images/users/user2-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی">
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            مریل استریپ
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            لس‌آنجلس، آمریکا
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="image-fit zoom-in box h-6 w-6 overflow-hidden rounded-full border-2 border-slate-200/70">
+                                                            <img src="/admin/images/users/user8-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی">
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            کیت بلانچت
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            هیوستون، ایالات متحده
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="border-t border-dashed px-5 py-4">
+                                                <div class="flex items-center">
+                                                    <div class="text-xs uppercase text-slate-500">
+                                                        بخش‌ها
+                                                    </div>
+                                                    <a class="rtl:mr-auto ltr:ml-auto text-xs text-slate-500" href="#">
+                                                        مشاهده همه
+                                                    </a>
+                                                </div>
+                                                <div class="mt-3.5 flex flex-col gap-1">
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="zoom-in box flex h-6 w-6 items-center justify-center overflow-hidden rounded-md border border-theme-1/10 bg-theme-1/10">
+                                                            <i data-tw-merge="" data-lucide="hotel" class="h-3.5 w-3.5 stroke-[1.3] text-theme-1"></i>
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            مدیریت محصول
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            گوآم
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="zoom-in box flex h-6 w-6 items-center justify-center overflow-hidden rounded-md border border-theme-1/10 bg-theme-1/10">
+                                                            <i data-tw-merge="" data-lucide="store" class="h-3.5 w-3.5 stroke-[1.3] text-theme-1"></i>
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            تحقیق و توسعه
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            وانواتو
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="zoom-in box flex h-6 w-6 items-center justify-center overflow-hidden rounded-md border border-theme-1/10 bg-theme-1/10">
+                                                            <i data-tw-merge="" data-lucide="store" class="h-3.5 w-3.5 stroke-[1.3] text-theme-1"></i>
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            مهندسی
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            اسرائیل
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="border-t border-dashed px-5 py-4">
+                                                <div class="flex items-center">
+                                                    <div class="text-xs uppercase text-slate-500">
+                                                        محصولات
+                                                    </div>
+                                                    <a class="rtl:mr-auto ltr:ml-auto text-xs text-slate-500" href="#">
+                                                        مشاهده همه
+                                                    </a>
+                                                </div>
+                                                <div class="mt-3.5 flex flex-col gap-1">
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="image-fit zoom-in box h-6 w-6 overflow-hidden rounded-full border-2 border-slate-200/70">
+                                                            <img src="/admin/images/products/product8-400x400.jpg" alt="تیل وایز - قالب داشبورد مدیریتی">
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            دوربین حرفه‌ای دیجیتال
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            زیبایی و مراقبت شخصی
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="image-fit zoom-in box h-6 w-6 overflow-hidden rounded-full border-2 border-slate-200/70">
+                                                            <img src="/admin/images/products/product4-400x400.jpg" alt="تیل وایز - قالب داشبورد مدیریتی">
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            دوربین امنیتی خانه هوشمند
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            غذا و خواربار
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-2.5 rounded-md border border-transparent p-1 hover:border-slate-100 hover:bg-slate-50/80" href="#">
+                                                        <div class="image-fit zoom-in box h-6 w-6 overflow-hidden rounded-full border-2 border-slate-200/70">
+                                                            <img src="/admin/images/products/product9-400x400.jpg" alt="تیل وایز - قالب داشبورد مدیریتی">
+                                                        </div>
+                                                        <div class="truncate font-medium">
+                                                            قوری قهوه‌ساز 8 فنجانی
+                                                        </div>
+                                                        <div class="hidden text-slate-500 sm:block">
+                                                            اسباب بازی‌ها و بازی‌ها
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END: Search -->

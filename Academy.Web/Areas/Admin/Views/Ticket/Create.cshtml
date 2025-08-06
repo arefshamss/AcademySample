@@ -1,0 +1,172 @@
+﻿@using Academy.Domain.Enums.Ticket
+@using Academy.Web.Extensions
+@model Academy.Domain.ViewModels.Ticket.Admin.AdminCreateTicketViewModel
+
+@{
+    ViewData["Title"] = "افزودن تیکت";
+    var referer = Context.Request.GetUrlReferer();
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item asp-area="Admin" asp-controller="Ticket" asp-action="List">لیست تیکت‌ها
+        </admin-breadcrumb-item>
+        <admin-breadcrumb-item last-active-item="true">@ViewData["Title"]</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+<div class="grid grid-cols-12 gap-x-6 gap-y-10">
+    <div class="col-span-12">
+        <div class="mt-3.5 flex flex-col gap-8">
+
+
+            <div class="box box--stacked flex flex-col">
+                <div class="flex flex-col gap-y-2 p-5 sm:flex-row sm:items-center">
+                    <h3 class="text-base font-bold opacity-95">@ViewData["Title"]</h3>
+                    <div class="flex flex-col gap-x-3 gap-y-2 rtl:sm:mr-auto ltr:sm:ml-auto sm:flex-row">
+
+                        <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown relative">
+                            <a type="button" asp-area="Admin" asp-controller="Ticket" asp-action="List" data-tw-merge=""
+                               data-tw-toggle="dropdown" aria-expanded="false"
+                               class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 w-full sm:w-auto">
+                                <i data-tw-merge="" data-lucide="corner-up-left"
+                                   class="rtl:ml-2 ltr:mr-2 h-4 w-4 stroke-[1.3]"></i>
+                                بازگشت
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <form asp-area="Admin"
+                  asp-controller="Ticket"
+                  asp-action="Create"
+                  method="post"
+                  enctype="multipart/form-data">
+                <div class="box box--stacked flex flex-col">
+
+                    <div class="p-5 grid grid-cols-12 gap-x-6">
+
+                        <div
+                            class="relative col-span-12 mb-4 mt-7 rounded-[0.6rem] border border-slate-200/80 dark:border-darkmode-400">
+                            <div
+                                class="absolute rtl:right-0 ltr:left-0 px-3 rtl:mr-4 ltr:ml-4 -mt-2 text-xs uppercase bg-white text-slate-500">
+                                <div class="-mt-px">اطلاعات تیکت</div>
+                            </div>
+                            <div class="p-5">
+                                <div class="grid grid-cols-12 gap-5">
+
+                                    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+                                        <div>
+                                            <div class="flex items-center mb-2">
+                                                <label asp-for="Title" class="font-medium"></label>
+                                                <div
+                                                    class="rtl:mr-2.5 ltr:ml-2.5 rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-xs text-slate-500 dark:bg-darkmode-300 dark:text-slate-400">
+                                                    ضروری
+                                                </div>
+                                            </div>
+                                            <input asp-for="Title" type="text"
+                                                   class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-800/50 [&amp;[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&amp;[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&amp;:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&amp;:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10">
+                                            <span asp-validation-for="Title"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+                                        <div>
+                                            <div class="flex items-center mb-2">
+                                                <label asp-for="UserId" class="font-medium"></label>
+                                                <div
+                                                    class="rtl:mr-2.5 ltr:ml-2.5 rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-xs text-slate-500 dark:bg-darkmode-300 dark:text-slate-400">
+                                                    ضروری
+                                                </div>
+                                            </div>
+                                            <input asp-for="UserId" data-select-input="User" type="hidden"/>
+                                            <input asp-for="UserDisplay" onfocus="$('#users-modal-btn').click()"
+                                                   readonly data-select-display="User"
+                                                   class="cursor-pointer bg-white dark:bg-darkmode-800 border-slate-300 dark:border-slate-600 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 transition duration-200 ease-in-out w-full text-sm rounded-md shadow-sm placeholder:text-slate-400/90" />
+                                            <a class="select-icon"
+                                               id="users-modal-btn"
+                                               asp-area="Admin"
+                                               asp-controller="User"
+                                               asp-action="ListPartial"
+                                               asp-ajax="true"
+                                               asp-ajax-modal-type="Large"
+                                               asp-ajax-modal-title="لیست کاربران">
+                                            </a>
+                                            <span asp-validation-for="UserId"></span>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+                                        <div>
+                                            <div class="flex items-center mb-2">
+                                                <label asp-for="TicketPriority" class="font-medium"></label>
+                                            </div>
+                                            <select asp-for="TicketPriority"
+                                                    asp-items="@Html.GetEnumSelectList<TicketPriority>()"
+                                                    class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm py-2 px-3 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 rounded-[0.5rem]">
+                                            </select>
+                                            <span asp-validation-for="TicketPriority"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+                                        <div>
+                                            <div class="flex items-center mb-2">
+                                                <label asp-for="TicketSection" class="font-medium"></label>
+                                            </div>
+                                            <select asp-for="TicketSection"
+                                                    asp-items="@Html.GetEnumSelectList<TicketSection>()"
+                                                    class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm py-2 px-3 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 rounded-[0.5rem]">
+                                            </select>
+                                            <span asp-validation-for="TicketPriority"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 md:col-span-6 lg:col-span-3">
+                                        <div>
+                                            <div class="flex items-center mb-2">
+                                                <label asp-for="TicketMessage.Attachment" class="font-medium"></label>
+                                            </div>
+                                            <input asp-for="TicketMessage.Attachment" type="file"
+                                                   accept=".rar, .zip, .pdf, .txt, .doc, .docx, .jpg, .jpeg, .png, .webp"
+                                                   class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-800/50 [&amp;[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&amp;[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&amp;:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&amp;:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10">
+                                            <span asp-validation-for="TicketMessage.Attachment"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12">
+                                        <div>
+                                            <div class="flex items-center mb-2">
+                                                <label asp-for="TicketMessage.Message" class="font-medium"></label>
+                                                <div
+                                                    class="rtl:mr-2.5 ltr:ml-2.5 rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-xs text-slate-500 dark:bg-darkmode-300 dark:text-slate-400">
+                                                    ضروری
+                                                </div>
+                                            </div>
+                                            <textarea asp-for="TicketMessage.Message" rows="5" type="text"
+ckeditor                                                      
+placeholder="پیام تیکت را وارد کنید..."
+                                                      class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&amp;[readonly]]:bg-slate-100 [&amp;[readonly]]:cursor-not-allowed [&amp;[readonly]]:dark:bg-darkmode-800/50 [&amp;[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&amp;[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&amp;:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&amp;:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10">
+                                            </textarea>
+                                            <span asp-validation-for="TicketMessage.Message"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex border-t border-slate-200/80 px-7 py-5 md:justify-end">
+                        <button type="submit" data-tw-merge=""
+                                class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed text-primary dark:border-primary [&:hover:not(:disabled)]:bg-primary/10 w-full border-primary/50 px-10 md:w-auto">
+                            <i data-tw-merge="" data-lucide="pocket"
+                               class="rtl:-mr-2 ltr:-ml-2 rtl:ml-2 ltr:mr-2 h-4 w-4 stroke-[1.3]"></i>
+                            ارسال
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

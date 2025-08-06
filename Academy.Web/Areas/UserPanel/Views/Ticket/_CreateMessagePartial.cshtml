@@ -1,0 +1,32 @@
+﻿@using Academy.Domain.Enums.Ticket
+@model Academy.Domain.ViewModels.TicketMessage.Client.ClientCreateTicketMessageViewModel
+
+<div>
+    <form asp-area="UserPanel"
+          asp-controller="Ticket"
+          asp-action="CreateTicketMessage"
+          enctype="multipart/form-data">
+        <input asp-for="SenderId" type="hidden"/>
+        <input asp-for="TicketId" type="hidden"/>
+        @if (Model.TicketStatus is not TicketStatus.Closed)
+        {
+            <input asp-for="Message" type="text" placeholder="پیام خود را وارد کنید ...">
+            <input asp-for="Attachment" type="file" class="d-none" ImageInput="1"/>
+            <a href="javascript:void(0)" ImageButton="1"
+               type="button"
+               title="ضمیمه">
+                <i class="icofont-attachment attachment" aria-hidden="true"></i>
+            </a>
+            
+            <button class="submit"><i class="icofont-arrow-left"></i></button>
+            <validation-span asp-validation-for="Message"/>
+
+        }
+        else
+        {
+            <div class="alert alert-danger text-danger mt-2" role="alert">
+                    <p class="fw-medium m-0">    این تیکت توسط ادمین بسته شده است و امکان ارسال پیام وجود ندارد.</p>
+            </div>
+        }
+    </form>
+</div>

@@ -1,0 +1,73 @@
+﻿/*Responsive Design*/
+@media all and (max-width: 239px) {
+    #toast-container > div {
+        padding: 8px 8px 8px 50px !important;
+        width: 11em !important;
+    }
+
+    #toast-container .toast-close-button {
+        right: -0.2em !important;
+        top: -0.2em !important;
+    }
+}
+
+@media all and (min-width: 240px) and (max-width: 479px) {
+    #toast-container > div {
+        padding: 8px 8px 8px 50px !important;
+        width: 18em !important;
+    }
+
+    #toast-container .toast-close-button {
+        right: -0.2em !important;
+        top: -0.2em !important;
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 767px) {
+    #toast-container > div {
+        padding: 15px 15px 15px 50px !important;
+        width: 35em !important;
+    }
+}
+
+.toast-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+.toast-message {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+.toast-bottom-full-width {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+.toast-top-left {
+    top: 12px;
+    left: 12px;
+}
+
+.toast-top-right {
+    top: 12px;
+    right: 12px;
+}
+
+.toast-bottom-right {
+    right: 12px;
+    bottom: 12px;
+}
+
+.toast-bottom-left {
+    bottom: 12px;
+    left: 12px;
+}
+#toast-container > div {
+    padding: 15px 15px 15px 50px !important;
+    width: 500px !important;
+    height: 90px !important;
+    max-width: 400px !important;
+}
+
+/*#endregion Notifications*/

@@ -1,0 +1,67 @@
+﻿@using Academy.Application.Statics
+@model Academy.Domain.ViewModels.User.Client.ClientUpdateUserAvatarViewModel
+
+<form asp-area="UserPanel"
+      asp-controller="User"
+      asp-action="UpdateAvatar"
+      asp-ajax="true"
+      asp-ajax-method="Post"
+      asp-ajax-success="successUpdateAvatar(data);"
+      asp-ajax-upload="true"
+      id="UpdateAvatarForm"
+      class="p-3">
+
+    <input asp-for="Avatar" type="file"  ImageInput="1" class="d-none"/>
+    <input asp-for="AvatarImageName" type="hidden"/>
+
+    <div class="border border-dashed rounded-circle p-1" style="width: 7rem; height: 7rem; border-color: #e5e7eb;">
+        <div class="position-relative w-100 h-100 rounded-circle overflow-hidden avatar-container">
+            <img class="w-100 h-100 rounded-circle object-fit-cover" id="AvatarImage"
+                 src="@Model.AvatarImageName" alt="profile-picture">
+
+            <div id="avatar-actions"
+                 class="gap-2 position-absolute top-0 start-0 end-0 bottom-0 d-flex justify-content-center align-items-center rounded-circle"
+                 style="background-color: rgba(0, 0, 0, 0.6);">
+                <a href="javascript:void(0)" ImageButton="1" class="text-warning d-flex">
+                    <i class="icofont-edit"></i>
+                </a>
+                
+                @if(Model.AvatarImageName != FilePaths.UserImagePath + SiteTools.DefaultImageName)
+                {
+                    <a class="text-danger d-flex"
+                       asp-area="UserPanel"
+                       asp-controller="User"
+                       asp-action="DeleteAvatar"
+                       asp-ajax="true"
+                       asp-ajax-success="successDeleteAvatar(data);"
+                       asp-ajax-reinitialize="false"
+                       asp-ajax-confirmable="true"
+                       asp-ajax-confirmable-title="حذف تصویر پروفایل"
+                       asp-ajax-confirmable-message="آیا از حذف تصویر پروفایل خود مطمئن هستید ؟"
+                       id="delete-avatar">
+                        <i class="icofont-ui-delete"></i>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</form>
+
+<style>
+    #avatar-actions {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .avatar-container:hover #avatar-actions {
+        opacity: 1;
+    }
+
+    .object-fit-cover {
+        object-fit: cover;
+    }
+
+    .border-dashed {
+        border-style: dashed;
+    }
+</style>

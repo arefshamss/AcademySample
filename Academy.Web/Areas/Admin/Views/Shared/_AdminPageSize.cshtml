@@ -1,0 +1,15 @@
+﻿@model Academy.Domain.ViewModels.Common.PagingViewModel
+@{
+    string selectId = string.IsNullOrEmpty(Model.FormId?.Trim()) ? "filter-search-entries" : Model.FormId + "-entries";
+    string formId = string.IsNullOrEmpty(Model.FormId?.Trim()) ? "filter-search" : Model.FormId;
+}
+
+<select data-tw-merge=""
+        id="@selectId"
+        onchange="fillTakeEntity('@formId')"
+        class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm py-2 px-3 rtl:pl-8 ltr:pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 rounded-[0.5rem] sm:w-20">
+    <option value="10" selected="@(Model.TakeEntity == 10 ? "selected" : null)">10</option>
+    <option value="25" selected="@(Model.TakeEntity == 25 ? "selected" : null)">25</option>
+    <option value="35" selected="@(Model.TakeEntity == 35 ? "selected" : null)">35</option>
+    <option value="50" selected="@(Model.TakeEntity == 50 ? "selected" : null)">50</option>
+</select>

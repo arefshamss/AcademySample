@@ -1,0 +1,102 @@
+﻿@using Academy.Application.Extensions
+@using Academy.Domain.Enums.Ticket
+@model Academy.Domain.ViewModels.Ticket.Client.ClientFilterTicketsViewModel
+
+@{
+    ViewData["Title"] = "تیکت‌های من";
+        int index = 0;
+}
+
+@section Breadcrumb
+{
+    <breadcrumb page-title="@ViewData["Title"]">
+        <breadcrumb-item last-active-item="true">@ViewData["Title"]</breadcrumb-item>
+    </breadcrumb>
+}
+
+<form asp-area="UserPanel"
+      asp-controller="Ticket"
+      asp-action="List"
+      method="get"
+      id="filter-search">
+    <input asp-for="Page" type="hidden">
+</form>
+
+<div class="dashboard__content__wraper">
+    <div class="dashboard__section__title justify-content-end">
+        <div class="dashboard__button__group">
+            <a class="dashboard__small__btn__2 custom_dashboard__small__btn__2"
+               asp-area="UserPanel"
+               asp-controller="Ticket"
+               asp-action="Create">ثبت تیکت جدید</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            @if (Model.Entities is not null && Model.Entities.Any())
+            {
+                <div class="dashboard__table table-responsive">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>عنوان</th>
+                            <th>اولویت</th>
+                            <th>تاریخ</th>
+                            <th>وضعیت</th>
+                            <th>عملیات</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.Entities)
+                        {
+                            <tr class="@((index % 2 == 1) ? "dashboard__table__row" : "")">
+                                <th>
+                                    <span><a>@item.Title</a></span>
+                                </th>
+                                <td>
+                                    <p>@item.TicketPriority.GetEnumName()</p>
+                                </td>
+                                <td>
+                                    <p>@item.CreatedDate.ToShamsi()</p>
+                                </td>
+                                <td>
+                                    @switch (item.TicketStatus)
+                                    {
+                                        case TicketStatus.Closed:
+                                            <span class="badge text-nowrap p-1 border border-danger text-danger">@item.TicketStatus.GetEnumName()</span>
+                                            break;
+                                        case TicketStatus.InProgress:
+                                            <span class="badge text-nowrap p-1 border border-warning text-warning">@item.TicketStatus.GetEnumName()</span>
+                                            break;
+                                        case TicketStatus.SupporterAnswered:
+                                            <span class="badge text-nowrap p-1 border border-success text-success">@item.TicketStatus.GetEnumName()</span>
+                                            break;
+                                        case TicketStatus.PendingForUserAnswer:
+                                            <span class="badge text-nowrap p-1 border border-info text-info">@item.TicketStatus.GetEnumName()</span>
+                                            break;
+                                    }
+                                   
+                                </td>
+                                <td>
+                                    <div class="dashboard__button__group">
+                                        <a class="dashboard__small__btn__2"
+                                           asp-area="UserPanel"
+                                           asp-controller="Ticket"
+                                           asp-action="Details"
+                                           asp-route-id="@item.Id">مشاهده</a>
+                                    </div>
+                                </td>
+                            </tr> 
+                            index++;
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <partial name="_NotFoundPartial"/>
+            }
+        </div>
+    </div>
+</div>

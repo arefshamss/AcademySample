@@ -1,0 +1,14 @@
+﻿@{
+    string? message = Model as string;
+}
+
+<div class="alert alert-secondary text-secondary mt-2" role="alert">
+    @if (string.IsNullOrEmpty(message))
+    {
+        <p class="fw-medium m-0">موردی یافت نشد ...</p>
+    }
+    else
+    {
+        <p class="fw-medium m-0">@message</p>
+    }
+</div>

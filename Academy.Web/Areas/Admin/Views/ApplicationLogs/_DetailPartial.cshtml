@@ -1,0 +1,44 @@
+﻿@using Academy.Application.Extensions
+@model Academy.Domain.ViewModels.ApplicationLogs.ApplicationLogDetailViewModel
+
+@if (Model != null)
+{
+    <div class="w-full mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
+        <div class="flex items-center">
+            <div class="text-slate-500">تاریخ:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @Model.TimeStamp.ToShamsiDateTime()
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">لول:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @Model.Level
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">message template:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @Model.MessageTemplate
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">rendered message:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500" >
+                @Model.RenderedMessage
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.Exception))
+        {
+            <div class="flex items-center">
+                <div class="text-slate-500">Exception:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500" style="overflow-x: auto;">
+                    @Model.Exception
+                </div>
+            </div>
+        }
+    </div>
+}

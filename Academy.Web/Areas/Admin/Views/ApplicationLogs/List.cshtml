@@ -1,0 +1,181 @@
+﻿@using Academy.Application.Extensions
+@using Academy.Data.Statics
+@using Academy.Domain.Enums.ApplicationLogs
+@model Academy.Domain.ViewModels.ApplicationLogs.FilterApplicationLogsViewModel
+@{
+    ViewData["Title"] = "لیست لاگ های برنامه";
+}
+
+@section Breadcrumb
+
+{
+    <admin-breadcrumb>
+        <admin-breadcrumb-item last-active-item="true">@ViewData["Title"]</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+<div class="box box--stacked flex flex-col">
+    <div class="flex flex-col gap-y-2 p-5 sm:flex-row sm:items-center">
+        <h3 class="text-base font-bold opacity-95">@ViewData["Title"]</h3>
+        <div class="flex flex-col gap-x-3 gap-y-2 rtl:sm:mr-auto ltr:sm:ml-auto sm:flex-row">
+
+            <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown relative inline-block">
+                <button data-tw-merge="" data-tw-toggle="dropdown" aria-expanded="false"
+                        class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 w-full sm:w-auto">
+                    <i data-tw-merge="" data-lucide="arrow-down-wide-narrow"
+                       class="rtl:ml-2 ltr:mr-2 h-4 w-4 stroke-[1.3]"></i>
+                    فیلتر
+                </button>
+                <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150"
+                     data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1"
+                     data-enter-to="!mt-1 visible opacity-100 translate-y-0"
+                     data-leave="transition-all ease-linear duration-150"
+                     data-leave-from="!mt-1 visible opacity-100 translate-y-0"
+                     data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1"
+                     class="dropdown-menu absolute z-[9999] hidden">
+                    <div data-tw-merge=""
+                         class="dropdown-content w-[300px] rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600">
+                        <div class="p-2">
+                            <form id="filter-search" asp-area="Admin" asp-controller="ApplicationLogs" asp-action="List"
+                                  method="get">
+                                <input type="hidden" asp-for="Page">
+                                <input type="hidden" asp-for="TakeEntity">
+                                <div class="py-3">
+                                    <label
+                                        class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 ltr:group-[.form-inline]:sm:mr-5 rtl:group-[.form-inline]:sm:ml-5 ltr:group-[.form-inline]:sm:text-right rtl:group-[.form-inline]:sm:text-left"
+                                        asp-for="Level">
+                                    </label>
+                                    <select data-tw-merge="" asp-for="Level"
+                                            asp-items="@Html.GetEnumSelectList<FilterLogLevel>()"
+                                            class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10">
+                                    </select>
+                                </div>
+
+                                                <div class="py-3">
+                                                    <label
+                                                        class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 ltr:group-[.form-inline]:sm:mr-5 rtl:group-[.form-inline]:sm:ml-5 ltr:group-[.form-inline]:sm:text-right rtl:group-[.form-inline]:sm:text-left"
+                                                        asp-for="FromDate">
+
+                                                    </label>
+
+                                                    <input asp-for="FromDate" placeholder-for="FromDate" id="elementId"
+                                                           data-tw-merge type="text" data-single-mode="true"
+                                                           class="elementClass disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10 mx-auto block ">
+                                                </div>
+
+                                                <div class="py-3">
+                                                    <label
+                                                        class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 ltr:group-[.form-inline]:sm:mr-5 rtl:group-[.form-inline]:sm:ml-5 ltr:group-[.form-inline]:sm:text-right rtl:group-[.form-inline]:sm:text-left"
+                                                        asp-for="ToDate">
+
+                                                    </label>
+
+                                                    <input asp-for="ToDate" placeholder-for="ToDate" id="elementId"
+                                                           data-tw-merge type="text" data-single-mode="true"
+                                                           class="elementClass disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10 mx-auto block ">
+                                                </div>
+
+                                <div class="mt-4 flex items-center">
+                                    @if (Model.HasFilters())
+                                    {
+                                        <a data-tw-merge=""
+                                           asp-area="Admin" asp-controller="ApplicationLogs" asp-action="List"
+                                           class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-secondary/70 border-secondary/70 text-slate-500 dark:border-darkmode-400 dark:bg-darkmode-400 dark:text-slate-300 [&:hover:not(:disabled)]:bg-slate-100 [&:hover:not(:disabled)]:border-slate-100 [&:hover:not(:disabled)]:dark:border-darkmode-300/80 [&:hover:not(:disabled)]:dark:bg-darkmode-300/80 rtl:mr-auto ltr:ml-auto w-32">
+                                            حذف فیلتر
+                                        </a>
+                                    }
+
+                                    <button data-tw-merge=""
+                                            type="submit"
+                                            class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary rtl:mr-2 ltr:ml-2 w-32">
+                                        اعمال
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overflow-auto xl:overflow-visible">
+        @if (Model != null && Model.Entities != null && Model.Entities.Any())
+        {
+            <table data-tw-merge="" class="w-full rtl:text-right ltr:text-left border-b border-slate-200/60">
+                <thead data-tw-merge="" class="">
+                <tr data-tw-merge="" class="">
+                    <td data-tw-merge=""
+                        class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
+                        تاریخ
+                    </td>
+                    <td data-tw-merge=""
+                        class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
+                        نوع
+                    </td>
+                    <td data-tw-merge=""
+                        class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
+                        عنوان
+                    </td>
+                    <td data-tw-merge=""
+                        class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 text-center font-medium text-slate-500">
+                        عملیات
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Entities ?? [])
+                {
+                    <tr data-tw-merge="" class="[&_td]:last:border-b-0">
+                        <td data-tw-merge=""
+                            class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
+                            <div class="flex items-center">
+                                @item.TimeStamp.ToShamsi()
+                            </div>
+                        </td>
+                        <td data-tw-merge=""
+                            class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600 min-w-64">
+                            <div class="flex items-center">
+                                @item.Level
+                            </div>
+                        </td>
+                        <td data-tw-merge=""
+                            class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
+                            <div class="flex items-center">
+                                @item.MessageTemplate
+                            </div>
+                        </td>
+
+                        <td data-tw-merge=""
+                            class="px-5 border-b dark:border-darkmode-300 relative border-dashed py-4 dark:bg-darkmode-600">
+                            <div class="flex items-center justify-center">
+                                <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"
+                                   asp-area="Admin"
+                                   asp-controller="ApplicationLogs"
+                                   asp-action="Detail"
+                                   asp-route-id="@item.Id"
+                                   asp-ajax="true"
+                                   asp-ajax-modal-type="Large"
+                                   asp-ajax-modal-title="جزئیات"
+                                   invoke-permission="@PermissionName.ApplicationLogDetail">
+                                    <i data-tw-merge="" data-lucide="list"
+                                       class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <partial name="_NotFoundPartial"/>
+        }
+    </div>
+    <div class="flex-reverse flex flex-col-reverse flex-wrap items-center gap-y-2 p-5 sm:flex-row">
+        <partial name="_AdminPagination" model="@Model?.GetCurrentPaging()"/>
+        <partial name="_AdminPageSize" model="@Model?.GetCurrentPaging()"/>
+    </div>
+</div>

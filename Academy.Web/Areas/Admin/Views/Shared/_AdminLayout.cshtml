@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="opacity-0" lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <partial name="_HeaderReferences"/>
+    @await RenderSectionAsync("Styles" , false)
+</head>
+<!-- END: Head -->
+<body>
+<partial name="_TemplatesSetting"/>
+<div
+    class="echo group bg-gradient-to-b from-slate-200/70 to-slate-50 background relative min-h-screen before:content-[''] before:h-[370px] before:w-screen before:bg-gradient-to-t before:from-theme-1/80 before:to-theme-2 [&.background--hidden]:before:opacity-0 before:transition-[opacity,height] before:ease-in-out before:duration-300 before:top-0 before:fixed after:content-[''] after:h-[370px] after:w-screen [&.background--hidden]:after:opacity-0 after:transition-[opacity,height] after:ease-in-out after:duration-300 after:top-0 after:fixed after:bg-texture-white after:bg-contain after:bg-fixed after:bg-[center_-13rem] after:bg-no-repeat">
+    <div
+        class="h-screen relative loading-page loading-page--before-hide [&.loading-page--before-hide]:before:block [&.loading-page--hide]:before:opacity-0 before:content-[''] before:transition-opacity before:duration-300 before:hidden before:inset-0 before:h-screen before:w-screen before:fixed before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:z-[60] [&.loading-page--before-hide]:after:block [&.loading-page--hide]:after:opacity-0 after:content-[''] after:transition-opacity after:duration-300 after:hidden after:h-16 after:w-16 after:animate-pulse after:fixed after:opacity-50 after:inset-0 after:m-auto after:bg-loading-puff after:bg-cover after:z-[61]">
+        <div
+            class="side-menu rtl:xl:mr-0 ltr:xl:ml-0 shadow-xl transition-[margin,padding] duration-300 xl:shadow-none fixed top-0 rtl:right-0 ltr:left-0 z-50 group inset-y-0 xl:py-3.5 rtl:xl:pr-3.5 ltr:xl:pl-3.5 after:content-[''] after:fixed after:inset-0 after:bg-black/80 after:xl:hidden side-menu--collapsed rtl:[&.side-menu--mobile-menu-open]:mr-0 ltr:[&.side-menu--mobile-menu-open]:ml-0 [&.side-menu--mobile-menu-open]:after:block rtl:-mr-[275px] ltr:-ml-[275px] after:hidden">
+            <partial name="_SideBar"/>
+            <div
+                class="fixed inset-x-0 top-0 mt-3.5 h-[65px] transition-[margin] duration-100 rtl:xl:mr-[275px] ltr:xl:ml-[275px] rtl:group-[.side-menu--collapsed]:xl:mr-[90px] ltr:group-[.side-menu--collapsed]:xl:ml-[90px]">
+                <div
+                    class="top-bar absolute rtl:right-0 ltr:left-0 rtl:xl:right-3.5 ltr:xl:left-3.5 rtl:left-0 ltr:right-0 h-full mx-5 group before:content-[''] before:absolute before:top-0 before:inset-x-0 before:-mt-[15px] before:h-[20px] before:backdrop-blur">
+                    <div
+                        class="box group-[.top-bar--active]:box container flex h-full w-full items-center border-transparent bg-transparent shadow-none transition-[padding,background-color,border-color] duration-300 ease-in-out group-[.top-bar--active]:border-transparent group-[.top-bar--active]:bg-transparent rtl:group-[.top-bar--active]:bg-gradient-to-l ltr:group-[.top-bar--active]:bg-gradient-to-r group-[.top-bar--active]:from-theme-1 group-[.top-bar--active]:to-theme-2 group-[.top-bar--active]:px-5">
+                        <div class="flex items-center gap-1 xl:hidden">
+                            <a class="p-2 text-white rounded-full open-mobile-menu hover:bg-white/5" href="#">
+                                <i data-tw-merge="" data-lucide="align-justify"
+                                   class="stroke-[1] h-[18px] w-[18px]"></i>
+                            </a>
+                            <a class="p-2 text-white rounded-full hover:bg-white/5" data-tw-toggle="modal"
+                               data-tw-target="#quick-search" href="javascript:;">
+                                <i data-tw-merge="" data-lucide="search" class="stroke-[1] h-[18px] w-[18px]"></i>
+                            </a>
+                        </div>
+
+                        @await RenderSectionAsync("Breadcrumb", required: true)
+
+                        <partial name="_AdminSearch"/>
+                        <!-- BEGIN: اطلاعیه & کاربر منو -->
+                        <div class="flex items-center flex-1">
+                            <div class="flex items-center gap-1 rtl:mr-auto ltr:ml-auto">
+                                <a class="p-2 text-white rounded-full request-full-screen hover:bg-white/5" href="#">
+                                    <i data-tw-merge="" data-lucide="expand" class="stroke-[1] h-[18px] w-[18px]"></i>
+                                </a>
+                                <a class="p-2 text-white rounded-full hover:bg-white/5" data-tw-toggle="modal"
+                                   data-tw-target="#notifications-panel" href="javascript:;">
+                                    <i data-tw-merge="" data-lucide="bell" class="stroke-[1] h-[18px] w-[18px]"></i>
+                                </a>
+                            </div>
+                            <div data-tw-merge="" data-tw-placement="bottom-start"
+                                 class="dropdown relative rtl:mr-5 ltr:ml-5">
+                                <button data-tw-toggle="dropdown" aria-expanded="false"
+                                        class="cursor-pointer image-fit h-[36px] w-[36px] overflow-hidden rounded-full border-[3px] border-white/[0.15]">
+                                    <img src="/admin/images/users/user1-50x50.jpg"
+                                         alt="تیل وایز - قالب داشبورد مدیریتی">
+                                </button>
+                                <div data-transition="" data-selector=".show"
+                                     data-enter="transition-all ease-linear duration-150"
+                                     data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1"
+                                     data-enter-to="!mt-1 visible opacity-100 translate-y-0"
+                                     data-leave="transition-all ease-linear duration-150"
+                                     data-leave-from="!mt-1 visible opacity-100 translate-y-0"
+                                     data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1"
+                                     class="dropdown-menu absolute z-[9999] hidden">
+                                    <div data-tw-merge=""
+                                         class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-56 mt-1">
+                                        <a href="echo-settings-connected-services.html"
+                                           class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i
+                                                data-tw-merge="" data-lucide="settings"
+                                                class="stroke-[1] w-4 h-4 rtl:ml-2 ltr:mr-2"></i>
+                                            خدمات متصل</a>
+                                        <a href="echo-settings-email-settings.html"
+                                           class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i
+                                                data-tw-merge="" data-lucide="inbox"
+                                                class="stroke-[1] w-4 h-4 rtl:ml-2 ltr:mr-2"></i>
+                                            تنظیمات ایمیل</a>
+                                        <a href="echo-settings-security.html"
+                                           class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i
+                                                data-tw-merge="" data-lucide="lock"
+                                                class="stroke-[1] w-4 h-4 rtl:ml-2 ltr:mr-2"></i>
+                                            بازنشانی رمز عبور</a>
+                                        <div class="h-px my-2 -mx-2 bg-slate-200/60 dark:bg-darkmode-400">
+                                        </div>
+                                        <a href="echo-settings.html"
+                                           class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i
+                                                data-tw-merge="" data-lucide="users"
+                                                class="stroke-[1] w-4 h-4 rtl:ml-2 ltr:mr-2"></i>
+                                            اطلاعات پروفایل</a>
+                                        <a href="echo-login.html"
+                                           class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i
+                                                data-tw-merge="" data-lucide="power"
+                                                class="stroke-[1] w-4 h-4 rtl:ml-2 ltr:mr-2"></i>
+                                            خروج</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <partial name="_NotificationPanel"/>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div
+            class="content transition-[margin,width] duration-100 rtl:xl:pr-3.5 ltr:xl:pl-3.5 pt-[54px] pb-16 relative z-10 group mode content--compact rtl:xl:mr-[275px] ltr:xl:ml-[275px] mode--light rtl:[&.content--compact]:xl:mr-[91px] ltr:[&.content--compact]:xl:ml-[91px]">
+            <div class="px-5 mt-16">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+
+      
+    </div>
+</div>
+
+<partial name="_FooterReferences"/>
+@await RenderSectionAsync("Scripts" , false)
+<partial name="_NotificationsPartial" />
+<partial name="_ModalsPartial"/>
+</body>
+</html>

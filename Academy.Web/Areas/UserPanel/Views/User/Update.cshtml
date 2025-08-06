@@ -1,0 +1,321 @@
+﻿@using Academy.Application.Extensions
+@using Academy.Domain.Enums.User
+@model Academy.Domain.ViewModels.User.Client.ClientUpdateUserViewModel
+
+
+@{
+    ViewData["Title"] = "ویرایش اطلاعات کاربری";
+}
+
+
+@section Breadcrumb
+{
+    <breadcrumb page-title="@ViewData["Title"]">
+        <breadcrumb-item last-active-item="true">@ViewData["Title"]</breadcrumb-item>
+    </breadcrumb>
+}
+
+<form id="EmailForm"
+      asp-area="UserPanel"
+      asp-controller="User"
+      asp-action="InsertEmailModal"
+      asp-ajax="true"
+      asp-ajax-modal-type="Small"
+      asp-ajax-modal-title="افزودن ایمیل"
+      asp-ajax-success="initialOtp();">
+</form>
+
+<form id="MobileForm"
+      asp-area="UserPanel"
+      asp-controller="User"
+      asp-action="InsertMobileModal"
+      asp-ajax="true"
+      asp-ajax-modal-type="Small"
+      asp-ajax-modal-title="افزودن تلفن همراه"
+      asp-ajax-success="initialOtp();">
+</form>
+
+<div class="create__course__accordion__wraper">
+    <form asp-area="UserPanel"
+          asp-controller="User"
+          asp-action="Update"
+          method="post"
+          enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id"/>
+        <div class="">
+            <div class="become__instructor__form">
+                <div class="row p-3">
+                    <div class="position-relative border rounded p-4 border-secondary-subtle">
+                        <div
+                            class="position-absolute top-0 translate-middle-y px-2 text-uppercase text-muted small bg-white border rounded border-secondary-subtle">
+                            اطلاعات پایه
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="FirstName" class="mb-1"></label>
+                                        <input asp-for="FirstName" type="text" placeholder="نام خود را وارد کنید...">
+                                        <validation-span asp-validation-for="FirstName"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="LastName" class="mb-1"></label>
+                                        <input asp-for="LastName" type="text"
+                                               placeholder="نام‌خانوادگی خود را وارد کنید...">
+                                        <validation-span asp-validation-for="LastName"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="Mobile" class="mb-1"></label>
+
+                                        <div class="input-group gap-1">
+                                            @if (!Model.Mobile.IsNullOrEmptyOrWhiteSpace())
+                                            {
+                                                <input asp-for="Mobile"
+                                                       type="text"
+                                                       readonly
+                                                       class="form-control"/>
+
+                                                <a type="button"
+                                                   asp-area="UserPanel"
+                                                   asp-controller="User"
+                                                   asp-action="EditMobileModal"
+                                                   asp-ajax="true"
+                                                   asp-ajax-modal-type="Small"
+                                                   asp-ajax-modal-title="ویرایش شماره موبایل"
+                                                   asp-ajax-success="initialOtp();"
+                                                   class="btn btn-sm bg-body justify-content-center align-content-center rounded-3 border-primary">
+                                                    ویرایش
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <input name="mobile"
+                                                       form="MobileForm"
+                                                       type="text"
+                                                       class="form-control"
+                                                       placeholder="تلفن همراه خود را وارد کنید..."
+                                                       required="required"/>
+
+                                                <button type="submit"
+                                                        form="MobileForm"
+                                                        class="btn btn-sm bg-body justify-content-center align-content-center rounded-3 border-primary">
+                                                    افزودن
+                                                </button>
+                                            }
+                                        </div>
+
+                                        <validation-span asp-validation-for="Mobile"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="Email" class="mb-1"></label>
+                                        <div class="input-group gap-1">
+                                            @if (!Model.Email.IsNullOrEmptyOrWhiteSpace())
+                                            {
+                                                <input asp-for="Email"
+                                                       type="text"
+                                                       readonly
+                                                       class="form-control"/>
+
+                                                <a type="button"
+                                                   asp-area="UserPanel"
+                                                   asp-controller="User"
+                                                   asp-action="EditEmailModal"
+                                                   asp-ajax="true"
+                                                   asp-ajax-modal-type="Small"
+                                                   asp-ajax-modal-title="ویرایش ایمیل"
+                                                   asp-ajax-success="initialOtp();"
+                                                   class="btn btn-sm bg-body justify-content-center align-content-center rounded-3 border-primary">
+                                                    ویرایش
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <input name="email"
+                                                       form="EmailForm"
+                                                       type="text"
+                                                       class="form-control"
+                                                       placeholder="ایمیل خود را وارد کنید..."
+                                                       required="required"/>
+
+                                                <button type="submit"
+                                                        form="EmailForm"
+                                                        class="btn btn-sm bg-body justify-content-center align-content-center rounded-3 border-primary">
+                                                    افزودن
+                                                </button>
+                                            }
+                                        </div>
+                                        <validation-span asp-validation-for="Email"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="HasPassword" class="mb-1"></label>
+                                        <div class="input-group gap-1">
+                                            @if (Model.HasPassword)
+                                            {
+                                                <a type="button"
+                                                   asp-area="UserPanel"
+                                                   asp-controller="User"
+                                                   asp-action="ChangePasswordModal"
+                                                   asp-ajax="true"
+                                                   asp-ajax-modal-type="Small"
+                                                   asp-ajax-modal-title="ویرایش رمز عبور"
+                                                   class="btn w-50 bg-body justify-content-center align-content-center rounded-3 border-primary">
+                                                    تغییر رمز عبور
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a type="button"
+                                                   asp-area="UserPanel"
+                                                   asp-controller="User"
+                                                   asp-action="AddPasswordModal"
+                                                   asp-ajax="true"
+                                                   asp-ajax-modal-type="Small"
+                                                   asp-ajax-modal-title="افزودن رمز عبور"
+                                                   asp-ajax-success="initialOtp();"
+                                                   class="btn w-50 bg-body justify-content-center align-content-center rounded-3 border-primary">
+                                                    افزودن رمز عبور
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="position-relative border rounded mt-5 p-4 border-secondary-subtle">
+                        <div
+                            class="position-absolute top-0 translate-middle-y px-2 text-uppercase text-muted small bg-white border rounded border-secondary-subtle">
+                            اطلاعات تکمیلی
+                        </div>
+                        <div class="row">
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="FatherName" class="mb-1"></label>
+                                        <input asp-for="FatherName" type="text"
+                                               placeholder="نام پدر خود را وارد کنید...">
+                                        <validation-span asp-validation-for="FatherName"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="BirthDate" class="mb-1"></label>
+                                        <input asp-for="BirthDate" datepicker type="text"
+                                               placeholder="تاریخ تولد خود را وارد کنید...">
+                                        <validation-span asp-validation-for="BirthDate"/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="NationalCode" class="mb-1"></label>
+                                        <input asp-for="NationalCode" type="text"
+                                               placeholder="کد ملی خود را وارد کنید...">
+                                        <validation-span asp-validation-for="NationalCode"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="BirthCertificateNumber" class="mb-1"></label>
+                                        <input asp-for="BirthCertificateNumber" type="text"
+                                               placeholder="شماره شناسنامه خود را وارد کنید...">
+                                        <validation-span asp-validation-for="BirthCertificateNumber"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__input">
+                                    <label asp-for="Gender" class="mb-1"></label>
+                                </div>
+                                <div class="dashboard__selector">
+                                    <select
+                                        asp-for="Gender"
+                                        asp-items="@Html.GetEnumSelectList<UserGender>()"
+                                        class="form-select" aria-label="Default select example">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__input">
+                                    <label asp-for="ReferralSource" class="mb-1"></label>
+                                </div>
+                                <div class="dashboard__selector">
+                                    <select
+                                        asp-for="ReferralSource"
+                                        asp-items="@Html.GetEnumSelectList<UserReferralSource>()"
+                                        class="form-select" aria-label="Default select example">
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="PostalCode" class="mb-1"></label>
+                                        <input asp-for="PostalCode" type="text" placeholder="کد پستی را وارد کنید...">
+                                        <validation-span asp-validation-for="PostalCode"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-4">
+                                <div class="dashboard__form__wraper">
+                                    <div class="dashboard__form__input">
+                                        <label asp-for="Address" class="mb-1"></label>
+                                        <textarea asp-for="Address" cols="30" rows="10"
+                                                  placeholder="آدرس خود را وارد کنید..."></textarea>
+                                        <validation-span asp-validation-for="Address"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-12">
+                        <div class="create__course__bottom__button">
+                            <button class="custom-create-ticket-btn" type="submit">
+                                ذخیره
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,137 @@
+﻿p {
+    margin-bottom: 0;
+}
+
+
+.custom-grid-area {
+    height: 850px;
+}
+
+
+.confirm-opt-input {
+    width: 3rem;
+    height: 3rem;
+}
+
+.breadcrumbarea {
+    padding-top: 40px;
+    padding-bottom: 50px;
+    margin-bottom: 12px;
+}
+
+.breadcrumb__inner ul li a::after {
+    transform: scaleX(-1);
+    top: 3px;
+}
+
+.dashboard__content__wraper {
+    padding: 10px 18px;
+}
+
+.dashboard__section__title {
+    padding-bottom: 10px;
+}
+
+.breadcrumb__content__wraper .breadcrumb__title h2 {
+    font-weight: 662;
+    font-size: 35px;
+}
+
+.headerarea__submenu--third {
+    left: 100% !important;
+    right: auto !important;
+}
+
+.dashboardarea__left__img {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    margin: 10px 10px 10px 20px;
+}
+
+.dashboard__small__btn__2 {
+    padding: 0;
+}
+
+.custom_dashboard__small__btn__2 {
+    padding: 0 14px;
+}
+
+.dashboard__meessage__sent ul li {
+    position: relative;
+    max-width: 500px;
+    display: flex;
+}
+
+.dashboard__meessage__profile {
+    position: relative;
+    display: flex;
+    padding: 1px 65px 12px 0px;
+    border-bottom: 1px solid var(--borderColor);
+    min-height: 60px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-14 {
+    font-size: 14px;
+}
+
+.dashboard__meessage__profile__chat__option {
+    position: relative;
+    left: 0;
+    bottom: 12px;
+}
+
+.dashboard__meessage__input {
+    position: relative;
+     padding-left: 0; 
+    margin-top: 30px;
+}
+
+.dashboard__meessage__input button {
+    left: 0;
+}
+
+.dashboard__meessage__profile__chat__option a:first-child {
+margin-left: 10px;
+    margin-right: 10px;
+}
+
+.dashboard__select__heading label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.5;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.form-select {
+    background-position: left .75rem center;
+}
+
+
+.custom-create-ticket-btn {
+    color: var(--whiteColor);
+    transition: 0.3s;
+    font-weight: 700;
+    padding: 20px;
+    font-size: 16px;
+    height: 30px;
+    line-height: 29px;
+    background: var(--primaryColor);
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--primaryColor);
+    justify-content: center;
+    margin: 5px 0;
+}
+
+.custom-create-ticket-btn:hover {
+    color: var(--primaryColor);
+    border: 1px solid var(--primaryColor);
+    background: var(--whiteColor);
+}

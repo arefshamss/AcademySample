@@ -1,0 +1,50 @@
+﻿@using Academy.Application.Extensions
+@model Academy.Domain.ViewModels.User.Client.ClientUpdateMobileViewModel
+
+@{
+    var activeCodeExpireTime = ViewData["ActiveCodeExpireTime"] as string;
+    var newMobile = ViewData["NewMobile"] as string;
+
+}
+
+<div>
+    <form asp-area="UserPanel"
+          asp-controller="User"
+          asp-action="EditMobileModal"
+          asp-ajax="true"
+          asp-ajax-method="Post"
+          asp-ajax-validation="true"
+          asp-ajax-update="#panel-content"
+          asp-ajax-success="closeSmModal(); window.location.reload();">
+        <input asp-for="Mobile" type="hidden"/>
+        <div class="row g-4">
+            @if (!newMobile.IsNullOrEmptyOrWhiteSpace())
+            {
+                <div class="justify-content-center">
+                    <span dir="rtl" class="text-14">
+                        کد ارسال شده به
+                        @newMobile.Trim().ToLower()
+                        را وارد کنید
+                    </span>
+                </div>   
+            }
+            <div class="col-xxl-12 mt-2">
+                <div class="dashboard__form__wraper">
+                    <div class="dashboard__form__input">
+                        <label asp-for="ConfirmationCode" class="mb-1"></label>
+                        <input asp-for="ConfirmationCode" type="text"
+                               placeholder="کد تایید ارسال شده را وارد کنید...">
+                        <validation-span asp-validation-for="ConfirmationCode"/>
+                    </div>
+                </div>
+            </div>
+            <div class="justify-content-center mt-2">
+                <span class="text-14" dir="rtl" id="otp-countdown" enddate="@activeCodeExpireTime"></span>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn bg-primary text-white btn-md">ذخیره</button>
+        </div>
+    </form>
+</div>

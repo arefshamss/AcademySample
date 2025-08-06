@@ -1,0 +1,172 @@
+﻿@model Academy.Domain.ViewModels.UserActivity.UserActivityDetailViewModel
+
+
+@if (Model != null)
+{
+    <div class="w-full mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
+        <div class="flex items-center">
+            <div class="text-slate-500">مرورگر:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.BrowserName ?? "-")
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">نسخه مرورگر:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.BrowserVersion ?? "-")
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">دستگاه:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.Device ?? "-")
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">برند:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.Brand ?? "-")
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">مدل:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.Model ?? "-")
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">سیستم عامل:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.Os ?? "-")
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">پلتفرم سیستم عامل:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.OsPlatform ?? "-")
+            </div>
+        </div>
+
+
+        <div class="flex items-center">
+            <div class="text-slate-500">بخش:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @switch (Model.Area)
+                {
+                    case "Admin":
+                    {
+                        <text>پنل ادمین</text>
+                        break;
+                    }
+                    case "MasterPanel":
+                    {
+                        <text>پنل مدرس</text>
+                        break;
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">آدرس درخواست:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.Url ?? "-")
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <div class="text-slate-500">فرم ارسالی در درخواست:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.FormData ?? "-")
+            </div>
+        </div>
+
+        @if (Model.IsBot)
+        {
+            <div class="flex items-center">
+                <div class="text-slate-500">نام ربات:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.BotName ?? "-")
+                </div>
+            </div>
+            
+            <div class="flex items-center">
+                <div class="text-slate-500">دسته بندی ربات:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.BotCategory ?? "-")
+                </div>
+            </div>
+            
+            <div class="flex items-center">
+                <div class="text-slate-500">سازنده ربات:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.BotProducer ?? "-")
+                </div>
+            </div>
+            
+            <div class="flex items-center">
+                <div class="text-slate-500">آدرس ربات:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.BotUrl ?? "-")
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="flex items-center">
+                <div class="text-slate-500">نام کاربر:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.Model ?? "-")
+                </div>
+            </div>
+            
+            <div class="flex items-center">
+                <div class="text-slate-500">آیدی مشتری (CustomerId):</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.Model ?? "-")
+                </div>
+            </div>
+
+            <div class="flex items-center">
+                <div class="text-slate-500">آیدی کاربر:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.Model ?? "-")
+                </div>
+            </div>
+            
+            <div class="flex items-center">
+                <div class="text-slate-500">کد ملی:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.Model ?? "-")
+                </div>
+            </div>
+
+            <div class="flex items-center">
+                <div class="text-slate-500">آی پی کاربر:</div>
+                <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                    @(Model.Model ?? "-")
+                </div>
+            </div>
+
+        }
+        
+        <div class="flex items-center">
+            <div class="text-slate-500">توضیحات:</div>
+            <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
+                @(Model.Description ?? "-")
+            </div>
+        </div>
+
+    </div>
+    
+}
+else
+{
+    <partial name="_NotFoundPartial"/>
+}

@@ -1,0 +1,96 @@
+﻿@using Academy.Domain.Enums.Ticket
+@model Academy.Domain.ViewModels.Ticket.Client.ClientCreateTicketViewModel
+
+@{
+    ViewData["Title"] = "ثبت تیکت جدید";
+}
+
+@section Breadcrumb
+{
+    <breadcrumb page-title="@ViewData["Title"]">
+        <breadcrumb-item asp-area="UserPanel" asp-controller="Ticket" asp-action="List">لیست تیکت‌ها</breadcrumb-item>
+        <breadcrumb-item last-active-item="true">@ViewData["Title"]</breadcrumb-item>
+    </breadcrumb>
+}
+
+<div class="create__course__accordion__wraper">
+    <form asp-area="UserPanel"
+          asp-controller="Ticket"
+          asp-action="Create"
+          method="post"
+          enctype="multipart/form-data">
+    <div class="">
+        <div class="become__instructor__form">
+            <div class="row">
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                            <div class="dashboard__select__heading">
+                                <label asp-for="TicketSection"></label>
+                            </div>
+                            <div class="dashboard__selector">
+                                <select
+                                    asp-for="TicketSection"
+                                    asp-items="@Html.GetEnumSelectList<TicketSection>()"
+                                    class="form-select" aria-label="Default select example">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                            <div class="dashboard__select__heading">
+                                <label asp-for="TicketPriority"></label>
+                            </div>
+                            <div class="dashboard__selector">
+                                <select
+                                    asp-for="TicketPriority"
+                                    asp-items="@Html.GetEnumSelectList<TicketPriority>()"
+                                    class="form-select" aria-label="Default select example">
+
+                                </select>
+                            </div>
+                        </div>
+
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                    <div class="dashboard__form__wraper">
+                        <div class="dashboard__form__input">
+                            <label asp-for="Title" class="mb-1"></label>
+                            <input asp-for="Title" type="text" placeholder="موضوع تیکت را وارد کنید...">
+                            <validation-span asp-validation-for="Title"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12 mt-4">
+                    <div class="dashboard__form__wraper">
+                        <div class="dashboard__form__input">
+                            <label asp-for="Message.Attachment" class="mb-1"></label>
+                            <input asp-for="Message.Attachment" type="file"
+                                   accept=".rar, .zip, .pdf, .txt, .doc, .docx, .jpg, .jpeg, .png, .webp">
+                            <validation-span asp-validation-for="Message.Attachment"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-4">
+                    <div class="dashboard__form__wraper">
+                        <div class="dashboard__form__input">
+                            <label asp-for="Message.Message" class="mb-1"></label>
+                            <textarea asp-for="Message.Message" cols="30" rows="10" placeholder="متن پیام خود را وارد کنید..."></textarea>
+                            <validation-span asp-validation-for="Message.Message"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-4 col-12">
+                    <div class="create__course__bottom__button">
+                        <button class="custom-create-ticket-btn" type="submit">ثبت تیکت</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

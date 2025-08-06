@@ -1,0 +1,156 @@
+﻿@using Academy.Application.Statics
+@model Academy.Domain.ViewModels.SiteSetting.UpdateSiteSettingViewModel
+@{
+    ViewData["Title"] = "تنظیمات سایت";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb>
+        <admin-breadcrumb-item>مدیریت سایت</admin-breadcrumb-item>
+        <admin-breadcrumb-item last-active-item="true">@ViewData["Title"]</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+<div class="grid grid-cols-12 gap-x-6 gap-y-10">
+    <div class="col-span-12">
+        <div class="mt-3.5 flex flex-col gap-8">
+            <div class="box box--stacked flex flex-col">
+                <div class="flex flex-col gap-y-2 p-5 sm:flex-row sm:items-center">
+                    <h3 class="text-base font-bold opacity-95">@ViewData["Title"]</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="mt-3.5 grid grid-cols-12 gap-x-6 gap-y-7 lg:gap-y-10 xl:grid-cols-10 mt-8">
+    <div class="relative order-first col-span-12 lg:order-last lg:col-span-3 xl:col-span-2">
+
+        <div class="sticky top-[104px]">
+            <ul class="relative flex flex-col  mb-3 rounded-[0.6rem] border border-primary/10 bg-primary/[0.03] py-2.5 text-slate-600/80 group-[.mode--light]:border-slate-300/20 group-[.mode--light]:bg-slate-300/10">
+                <li class="relative px-5 py-[9.2px] group-[.mode--light]:text-white/90 [&.active]:text-primary [&.active]:font-medium [&.active]:before:bg-primary/70 [.group.mode--light_&.active]:text-white [.group.mode--light_&.active]:before:bg-white before:content-[''] before:absolute before:h-[60%] before:w-0.5 rtl:before:right-0 ltr:before:left-0 before:inset-y-0 before:my-auto rtl:before:-mr-px ltr:before:-ml-px">
+                    <a class="-mt-px block truncate" asp-area="Admin" asp-controller="CaptchaSetting" asp-action="Update">
+                        تنظیمات کپتچای سایت
+                    </a>
+                </li>
+                <li class="relative px-5 py-[9.2px] group-[.mode--light]:text-white/90 [&.active]:text-primary [&.active]:font-medium [&.active]:before:bg-primary/70 [.group.mode--light_&.active]:text-white [.group.mode--light_&.active]:before:bg-white before:content-[''] before:absolute before:h-[60%] before:w-0.5 rtl:before:right-0 ltr:before:left-0 before:inset-y-0 before:my-auto rtl:before:-mr-px ltr:before:-ml-px">
+                    <a class="-mt-px block truncate" asp-area="Admin" asp-controller="SmsSetting" asp-action="Update">
+                        تنظیمات پیامک ها
+                    </a>
+                </li>
+                <li class="relative px-5 py-[9.2px] group-[.mode--light]:text-white/90 [&.active]:text-primary [&.active]:font-medium [&.active]:before:bg-primary/70 [.group.mode--light_&.active]:text-white [.group.mode--light_&.active]:before:bg-white before:content-[''] before:absolute before:h-[60%] before:w-0.5 rtl:before:right-0 ltr:before:left-0 before:inset-y-0 before:my-auto rtl:before:-mr-px ltr:before:-ml-px">
+                    <a class="-mt-px block truncate" asp-area="Admin" asp-controller="EmailSmtp" asp-action="List">
+                        مدیریت SMTP ها 
+                    </a>
+                </li>
+            </ul>
+            <div class="box box--stacked flex flex-col p-2 !pt-0 !pb-0 mb-3">
+                <div
+                    class="relative sm:col-span-12 lg:col-span-2 md:col-span-4 mb-4 mt-7 rounded-[0.6rem] border border-slate-200/80 dark:border-darkmode-400">
+                    <div
+                        class="absolute rtl:right-0 ltr:left-0 px-3 rtl:mr-4 ltr:ml-4 -mt-2 text-xs uppercase bg-white text-slate-500">
+                        <div class="-mt-px">لوگوی سایت</div>
+                    </div>
+                    <div class="p-5">
+
+                        <div class="block ">
+                            @* <label asp-for="AvatarImageFile" class="mb-2 block"></label> *@
+                            <div class="relative max-w-xs group">
+                                <img ImageFile="1" class="max-w-full h-auto rounded select-image-preview-box"
+                                     src="@FilePaths.SiteLogoPath@Model.Logo"/>
+                                <label asp-for="LogoFile" ImageButton="1" class="hover-icon rounded flex items-center justify-center cursor-pointer absolute inset-0">
+                                    <i data-tw-merge="" data-lucide="edit" class="stroke-[1] w-5 h-5 mx-auto block"></i>
+                                </label>
+                                <input type="file" asp-for="LogoFile" class="hidden" form="frmSiteSetting"
+                                       accept="image/png, image/jpeg, image/webp" ImageInput="1"/>
+                                <span asp-validation-for="LogoFile"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="box box--stacked flex flex-col p-2 !pt-0 !pb-0 mb-3">
+                <div
+                    class="relative sm:col-span-12 lg:col-span-2 md:col-span-4 mb-4 mt-7 rounded-[0.6rem] border border-slate-200/80 dark:border-darkmode-400">
+                    <div
+                        class="absolute rtl:right-0 ltr:left-0 px-3 rtl:mr-4 ltr:ml-4 -mt-2 text-xs uppercase bg-white text-slate-500">
+                        <div class="-mt-px">فاو آیکون</div>
+                    </div>
+                    <div class="p-5">
+
+                        <div class="block ">
+                            <div class="relative max-w-xs group">
+                                <img ImageFile="2" class="max-w-full h-auto rounded select-image-preview-box"
+                                     src="@FilePaths.FaviconPath@Model.Favicon"/>
+                                <label asp-for="FavIconFile" ImageButton="2" class="hover-icon rounded flex items-center justify-center cursor-pointer absolute inset-0">
+                                    <i data-tw-merge="" data-lucide="edit" class="stroke-[1] w-5 h-5 mx-auto block"></i>
+                                </label>
+                                <input type="file" asp-for="FavIconFile" class="hidden" form="frmSiteSetting"
+                                       accept="image/png, image/jpeg, image/webp" ImageInput="2"/>
+                                <span asp-validation-for="FavIconFile"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="relative col-span-12 flex flex-col gap-y-7 lg:col-span-9 xl:col-span-8">
+        <div class="box box--stacked flex flex-col">
+            <form method="post" asp-area="Admin" asp-controller="SiteSettings" asp-action="ChangeSiteSetting"
+                 enctype="multipart/form-data" id="frmSiteSetting">
+                <input type="hidden" asp-for="Logo"/>
+                <input type="hidden" asp-for="Favicon"/>
+                <div class="grid !grid-cols-1 sm:!grid-cols-3 gap-4 p-5">
+                    <div>
+                        <label data-tw-merge="" asp-for="SiteName" class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 ltr:group-[.form-inline]:sm:mr-5 rtl:group-[.form-inline]:sm:ml-5 ltr:group-[.form-inline]:sm:text-right rtl:group-[.form-inline]:sm:text-left">
+                        </label>
+                        <input data-tw-merge="" asp-for="SiteName" placeholder="ورودی متن" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10">
+                        <span asp-validation-for="SiteName"></span>
+                    </div>
+                    <div>
+                        <label data-tw-merge="" asp-for="DefaultMailServerSmtpId" class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 ltr:group-[.form-inline]:sm:mr-5 rtl:group-[.form-inline]:sm:ml-5 ltr:group-[.form-inline]:sm:text-right rtl:group-[.form-inline]:sm:text-left">
+                        </label>
+                        <select data-tw-merge="" asp-for="DefaultMailServerSmtpId" asp-items="@ViewData["MailServersSmtp"] as SelectList" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10">
+                        </select>
+                        <span asp-validation-for="DefaultMailServerSmtpId"></span>
+                    </div>
+                    <div>
+                        <label data-tw-merge="" asp-for="DefaultSimpleSmtpId" class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 ltr:group-[.form-inline]:sm:mr-5 rtl:group-[.form-inline]:sm:ml-5 ltr:group-[.form-inline]:sm:text-right rtl:group-[.form-inline]:sm:text-left">
+                        </label>
+                        <select data-tw-merge="" asp-for="DefaultSimpleSmtpId" asp-items="@ViewData["SimplesSmtp"] as SelectList" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10">
+                        </select>
+                        <span asp-validation-for="DefaultSimpleSmtpId"></span>
+                    </div>
+
+
+                </div>
+                <div class="grid !grid-cols-1  gap-4 p-5">
+                    <label asp-for="Copyright"></label>
+                    <textarea asp-for="Copyright" placeholder-for="Copyright" ckeditor></textarea>
+                    <span class="text-danger" asp-validation-for="Copyright"></span>
+                </div>
+                <div class="float-end !pb-5 !pe-5">
+                    <button type="submit" data-tw-merge=""
+                            class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed text-primary dark:border-primary [&:hover:not(:disabled)]:bg-primary/10 w-full border-primary/50 px-10 md:w-auto">
+                        <i data-tw-merge="" data-lucide="pocket"
+                           class="rtl:-mr-2 ltr:-ml-2 rtl:ml-2 ltr:mr-2 h-4 w-4 stroke-[1.3]"></i>
+                        ذخیره
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+

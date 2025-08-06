@@ -1,0 +1,105 @@
+﻿@using Academy.Application.Extensions
+@model Academy.Domain.ViewModels.User.Account.OtpCodeViewModel
+
+@{
+    ViewData["Title"] = "ورود به حساب کاربری";
+    var activeCodeExpireTime = ViewData["ActiveCodeExpireTime"] as string;
+}
+
+@section Breadcrumb
+{
+    <breadcrumb page-title="@ViewData["Title"]">
+        <breadcrumb-item last-active-item="true">@ViewData["Title"]</breadcrumb-item>
+    </breadcrumb>
+}
+
+<div class="loginarea sp_top_100 sp_bottom_100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up">
+                <div class="tab-pane fade active show" id="projects__one" role="tabpanel"
+                     aria-labelledby="projects__one">
+                    <div class="col-xl-8 col-md-8 offset-md-2 mx-auto">
+                        <div class="loginarea__wraper">
+                            <form asp-area="" asp-controller="Account" asp-action="ConfirmOtpCode" method="post" class="confirm-opt-form">
+                                <input asp-for="MobileOrEmail" type="hidden"/>
+                                <input asp-for="ReturnUrl" type="hidden"/>
+                                <input asp-for="UserId" type="hidden"/>
+                                <input asp-for="Code" type="hidden"/>
+
+                                <div class="login__form">
+                                    <label asp-for="Code" class="mb-4 align-items-center d-flex justify-content-center">
+                                         کد ارسال شده به
+                                        @Model.MobileOrEmail.Trim().ToLower()
+                                        را وارد کنید
+                                    </label>
+                                    <div class="d-flex justify-content-center gap-2" dir="ltr">
+                                        <input type="text" inputmode="numeric" maxlength="1"
+                                               class="confirm-opt-input form-control text-center rounded-pill border border-secondary" autofocus>
+                                        <input type="text" inputmode="numeric" maxlength="1"
+                                               class="confirm-opt-input form-control text-center rounded-pill border border-secondary">
+                                        <input type="text" inputmode="numeric" maxlength="1"
+                                               class="confirm-opt-input form-control text-center rounded-pill border border-secondary">
+                                        <input type="text" inputmode="numeric" maxlength="1"
+                                               class="confirm-opt-input form-control text-center rounded-pill border border-secondary">
+                                        <input type="text" inputmode="numeric" maxlength="1"
+                                               class="confirm-opt-input form-control text-center rounded-pill border border-secondary">
+                                        <input type="text" inputmode="numeric" maxlength="1"
+                                               class="confirm-opt-input form-control text-center rounded-pill border border-secondary">
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 text-center">
+                                    <div class="justify-content-center">
+                                        <span dir="rtl" id="otp-countdown" enddate="@activeCodeExpireTime"></span>
+                                    </div>
+                                </div>
+
+                                <div class="login__button mt-4 text-center">
+                                    <div class="justify-content-center">
+                                        <button type="submit" class="default__button">ثبت</button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-center mt-4">
+                                <a asp-area=""
+                                   asp-controller="Account"
+                                   asp-action="ResendOtpCode"
+                                   asp-route-mobileOrEmail="@Model.MobileOrEmail"
+                                   asp-ajax="true"
+                                   asp-ajax-success="successResendOtp(data, status, xhr);"
+                                   class="position-relative @(DateTime.Now < activeCodeExpireTime!.ToDateTimeFromJavaScriptDateTime() ? "d-none" : "d-inline-block") text-nowrap"
+                                   id="resend-otp">
+                                    ارسال مجدد کد تایید
+                                </a>
+                                </div>
+                                <div class="text-sm font-medium text-center leading-[24px]">
+                                    <a
+                                        asp-area=""
+                                        asp-controller="Account"
+                                        asp-action="LoginOrRegister"
+                                        asp-route-MobileOrEmail="@Model.MobileOrEmail"
+                                        class="position-relative d-inline-block text-truncate small font-weight-medium text-dark custom-underline align-text-bottom">
+                                        @(Model.MobileOrEmail.Contains("@") ? "تغییر ایمیل وارد شده" : "تغییر شماره همراه وارد شده")
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=" login__shape__img educationarea__shape_image">
+            <img loading="lazy" class="hero__shape hero__shape__1" src="/shared/img/education/hero_shape2.png"
+                 alt="Shape">
+            <img loading="lazy" class="hero__shape hero__shape__2" src="/shared/img/education/hero_shape3.png"
+                 alt="Shape">
+            <img loading="lazy" class="hero__shape hero__shape__3" src="/shared/img/education/hero_shape4.png"
+                 alt="Shape">
+            <img loading="lazy" class="hero__shape hero__shape__4" src="/shared/img/education/hero_shape5.png"
+                 alt="Shape">
+        </div>
+
+    </div>
+</div>

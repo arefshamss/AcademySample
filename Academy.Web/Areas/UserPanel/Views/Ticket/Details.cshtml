@@ -1,0 +1,103 @@
+﻿@using Academy.Application.Extensions
+@using Academy.Domain.Enums.Ticket
+@using Academy.Domain.ViewModels.TicketMessage.Client
+@model Academy.Domain.ViewModels.Ticket.Client.ClientTicketViewModel
+@{
+    ViewData["Title"] = "جزئیات تیکت";
+    var userId = User.GetUserId();
+}
+
+@section Breadcrumb
+{
+    <breadcrumb page-title="@Model.Title">
+        <breadcrumb-item asp-area="UserPanel" asp-controller="Ticket" asp-action="List">لیست تیکت‌ها</breadcrumb-item>
+        <breadcrumb-item last-active-item="true">@ViewData["Title"]</breadcrumb-item>
+    </breadcrumb>
+}
+
+<div class="dashboard__message__content__main">
+        <div class="dashboard__meessage__wraper">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="dashboard__meessage__content__wrap">
+                        <div class="dashboard__meessage__profile">
+                            <div>
+                                <div class="dashboard__meessage__profile__img">
+                                    <img class="border border-1" loading="lazy" src="/shared/img/logo.png" alt="">
+                                </div>
+                                <div class="dashboard__meessage__profile__meta">
+                                    <h5>@Model.TicketSection.GetEnumName()</h5>
+                                    <p> اولویت @Model.TicketPriority.GetEnumName()</p>
+                                </div> 
+                            </div>
+                            <div>
+                                @switch (Model.TicketStatus)
+                                {
+                                    case TicketStatus.InProgress:
+                                        <span class="badge text-nowrap text-14 p-2 border border-warning text-warning">@Model.TicketStatus.GetEnumName()</span>
+                                        break;
+                                    case TicketStatus.Closed:
+                                        <span class="badge text-nowrap text-14 p-2 border border-danger text-danger">@Model.TicketStatus.GetEnumName()</span>
+                                        break;
+                                    case TicketStatus.PendingForUserAnswer:
+                                        <span class="badge text-nowrap text-14 p-2 border border-info text-info">@Model.TicketStatus.GetEnumName()</span>
+                                        break;
+                                    case TicketStatus.SupporterAnswered:
+                                        <span class="badge text-nowrap text-14 p-2 border border-success text-success">@Model.TicketStatus.GetEnumName()</span>
+                                        break;
+                                }
+                            </div>
+                        </div>
+                        <div class="dashboard__meessage__sent">
+                            <ul>
+                                @foreach (var item in Model.Messages)
+                                {
+                                    @if(item.SenderId == userId)
+                                    {
+                                        <li class="py-2 align-items-center justify-content-start">
+                                            <div class="dashboard__meessage__sent__item__content">
+                                                <p>@Html.Raw(item.Message)</p>
+                                                <span class="time"> @item.CreatedDate.ToHumanize()</span>
+                                            </div>
+                                            @if (!string.IsNullOrWhiteSpace(item.AttachmentUrl))
+                                            {
+                                                <div class="dashboard__meessage__profile__chat__option">
+                                                    <a href="@(item.AttachmentUrl)"
+                                                       download
+                                                       title="دانلود ضمیمه"><i class="icofont-download"></i></a>
+                                                </div>
+                                            }
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="dashboard__meessage__sent__item p-2 py-2 align-items-center justify-content-end">
+                                            @if (!string.IsNullOrWhiteSpace(item.AttachmentUrl))
+                                            {
+                                                <div class="dashboard__meessage__profile__chat__option">
+                                                    <a href="@(item.AttachmentUrl)"
+                                                       download
+                                                       title="دانلود ضمیمه"><i class="icofont-download"></i></a>
+                                                </div>
+                                            }
+                                            <div class="dashboard__meessage__sent__item__content">
+                                                    <div>@Html.Raw(item.Message)</div>
+                                                <span class="time"> @item.CreatedDate.ToHumanize()</span>
+                                            </div>
+                                        </li>
+                                    }
+
+
+                                }
+                            </ul>
+                        </div>
+                        <div class="dashboard__meessage__input">
+                            <partial name="_CreateMessagePartial"
+                                     model="new ClientCreateTicketMessageViewModel { TicketId = Model.Id, SenderId = userId, TicketStatus = Model.TicketStatus }"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

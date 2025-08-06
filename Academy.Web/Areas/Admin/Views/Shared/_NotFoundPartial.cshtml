@@ -1,0 +1,18 @@
+﻿@{
+    string? message = Model as string;
+}
+
+<div class="p-5">
+    <div class="flex flex-col gap-2">
+        <div role="alert" class="alert relative border rounded-md px-5 py-4 bg-primary border-primary bg-opacity-20 border-opacity-5 text-primary dark:border-opacity-100 dark:bg-opacity-20 dark:border-primary flex items-center"><i data-tw-merge data-lucide="alert-circle" class="stroke-[1] w-5 h-5 rtl:ml-2 ltr:mr-2 h-6 w-6 rtl:ml-2 ltr:mr-2 h-6 w-6"></i>
+            @if (string.IsNullOrEmpty(message))
+            {
+                <text>موردی یافت نشد!</text>
+            }
+            else
+            {
+                <text>@Model</text>
+            }
+        </div>    
+    </div>
+</div>
