@@ -2,26 +2,25 @@
 This is a sample educational web application developed using ASP.NET Core based on a 5-layer architecture. It includes essential modules commonly found in real-world applications, with a focus on clean structure and modular design.
 
 ## ✅ Features :
-
-## 🔐 Authentication & Authorization
+**🔐 Authentication & Authorization**
 User login, registration, and secure session handling
 
-## 🧑‍💻 User Panel
+**🧑‍💻 User Panel**
 A dedicated dashboard for users to manage their activities
 
-## 📩 Ticketing System
+**📩 Ticketing System**
 Users can create and track support tickets
 
-## 📝 User Activity Logging
+**📝 User Activity Logging**
 Logs user actions and important events for better traceability
 
-## 🗃️ Course Category Management
+**🗃️ Course Category Management**
 Admins can create and manage course categories
 
-## 👥 User Management
+**👥 User Management**
 Admin-side control over users and their roles
 
-## 🧱 Modular 5-Layer Architecture
+**🧱 Modular 5-Layer Architecture**
 Separation of concerns using:
 - Domain Layer
 - Application Layer
@@ -29,7 +28,7 @@ Separation of concerns using:
 - Web Layer
 - Common/Shared Layer
 
-## 🧾 Logging System
+**🧾 Logging System**
 Integrated logging with extensibility for various providers
 
 ## 🚀 Technologies Used
@@ -46,7 +45,6 @@ This project is in progress and serves as a base structure for future academy-re
 
 ## 📚 About the Developer
 This project reflects my practical experience in building structured backend systems with ASP.NET Core, following clean architecture practices.
-
 
 ## 🔐 **Note:**
 For security reasons, all sensitive keys, credentials, and... have been removed from the public repository.  
