@@ -135,3 +135,6 @@
 /Academy.Web/Properties/PublishProfiles/FolderProfile.pubxml
 /Academy.Web/Properties/PublishProfiles/FolderProfile.pubxml.user
 /Academy.Web/Academy.Web.csproj.user
+node_modules/
+bin/
+obj/
